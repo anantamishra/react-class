@@ -2,8 +2,9 @@ import React from "react";
 
 export function About() {
   return (
-    <>
-      <p>About Page</p>
-    </>
+    <div className="text-5xl font-bold">
+      <p className="text-green-900/50">About Page</p>
+      <p className="text-red-500">About Page</p>
+    </div>
   );
 }
