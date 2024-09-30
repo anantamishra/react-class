@@ -12,7 +12,6 @@ export function SumInputs() {
   const handleInput2Change = (event) => {
     setInput2(event.target.value);
   };
-
   const calculateSum = (value1, value2) => {
     return Number(value1) + Number(value2);
   };
