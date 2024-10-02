@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Footer, Header } from './components';
-import { About, Contact, Home, Operation, SumInputs } from './pages';
+import { About, Calculator, Contact, Home, Operation, SumInputs } from './pages';
 
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/use-effect" element={<SumInputs />} />
         <Route path="/operation" element={<Operation />} />
+        <Route path="/calculator" element={<Calculator />} />
       </Routes>
       <Footer />
     </>
