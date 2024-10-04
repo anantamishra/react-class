@@ -7,14 +7,21 @@ export const Calculator = () => {
     if (value === "=") {
       try {
         const result = eval(input);
-        setInput(result.toString());
+        if (result === "NaN") {
+          setInput("");
+        } else {
+          setInput(result.toString());
+          console.log(result);
+        }
       } catch (error) {
         setInput("Error");
       }
     } else if (value === "C") {
       setInput("");
     } else if (value === "DEL") {
-      setInput(input.slice(0, -2));
+      if (input === "Error" || input === "Infinity") {
+        setInput("");
+      }
     } else {
       setInput(input + value);
     }
@@ -22,9 +29,15 @@ export const Calculator = () => {
 
   return (
     <div className="flex justify-center items-center h-screen bg-gradient-to-r from-purple-500 to-orange-500">
-      <div className="bg-white rounded-lg shadow-lg p-4 w-80">
-        <div className="mb-2 text-right text-3xl font-bold">{input || "0"}</div>
-        <div className="grid grid-cols-4 gap-2">
+      <div className="bg-white rounded-lg shadow-lg p-4 w-80 flex flex-col">
+        <div className="bg-[#0f172a] p-4 rounded-lg text-right mb-4 text-white flex flex-col justify-end">
+          <input
+            className="text-4xl font-bold caret-[#0f172a] bg-inherit text-right justify-end flex "
+            disabled
+            value={input || "0"}
+          />
+        </div>
+        <div className="grid grid-cols-4 gap-2 last:col-span-2">
           {["C", "DEL", "%", "/"].map((symbol) => (
             <button
               key={symbol}
@@ -61,7 +74,7 @@ export const Calculator = () => {
               {symbol}
             </button>
           ))}
-          {[0, ".", "=", ""].map((symbol, index) => (
+          {[0, ".", "="].map((symbol, index) => (
             <button
               key={index}
               onClick={() => handleClick(symbol.toString())}
