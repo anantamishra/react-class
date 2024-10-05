@@ -6,9 +6,7 @@ export function BlogPostCard({ post }) {
       </h2>
       <p className="text-gray-600 mb-4">{post.content}</p>
       <p className="text-sm text-gray-500">
-        <span>
-          Published on: {new Date(post.publishedAt).toLocaleDateString()}
-        </span>
+        Published on: {new Date(post.publishedAt).toLocaleDateString()}
       </p>
     </div>
   );
