@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Footer, Header } from './components';
-import { About, Calculator, Contact, Home, NewsPortal, Operation, Quiz, SingleNews, SumInputs } from './pages';
+import { About, Blogs, Calculator, Contact, Home, NewsPortal, Operation, Quiz, SingleNews, SumInputs } from './pages';
 
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
         <Route path="/news-portal" element={<NewsPortal />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/news/:id" element={<SingleNews />} />
+        <Route path="/blogs" element={<Blogs />} />
       </Routes>
       <Footer />
     </>
