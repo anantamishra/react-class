@@ -6,20 +6,20 @@ export function Blogs() {
   const [error, setError] = useState(null); // State for error handling
 
   useEffect(() => {
-    const fetchBlogs = async () => {
+    async function fetchBlogs() {
       try {
         const response = await fetch(
           "https://fosslovers.com/wp-json/wp/v2/posts"
         );
-        if (!response.ok) {
+        if (response.ok === false) {
           throw new Error("Failed to fetch blogs");
         }
         const data = await response.json();
         setBlogsData(data); // Store the blog data in state
       } catch (err) {
-        setError(err.message); // Catch and set any error
+        setError(err.code); // Catch and set any error
       }
-    };
+    }
 
     fetchBlogs();
   }, []);
@@ -51,7 +51,7 @@ const BlogCard = ({ title, excerpt, imgUrl, postedDate, slug }) => {
     <div className="flex flex-col items-start border p-5 rounded-lg shadow-lg gap-4">
       <h1 className="text-2xl font-bold">{title}</h1>
       <img src={imgUrl} alt={title} className="w-full overflow-hidden h-96" />
-      <p> {excerpt} </p>
+      <p dangerouslySetInnerHTML={{ __html: excerpt }} />
       <p>Published on: {postedDate}</p>
       <Link to={`/blogs/${slug}`}>
         <button className="bg-blue-500 text-white py-3 px-5 rounded-lg">
