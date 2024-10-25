@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 export function Blogs() {
   const [blogsData, setBlogsData] = useState([]); // State to store blog data
   const [error, setError] = useState(null); // State for error handling
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchBlogs() {
@@ -17,12 +18,18 @@ export function Blogs() {
         const data = await response.json();
         setBlogsData(data); // Store the blog data in state
       } catch (err) {
-        setError(err.code); // Catch and set any error
+        setError(err.message); // Catch and set any error
+      } finally {
+        setLoading(false);
       }
     }
 
     fetchBlogs();
   }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   if (error) {
     return <div>Error: {error}</div>;
