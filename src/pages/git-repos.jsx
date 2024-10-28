@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-export const GitHubProfile = () => {
+export const GitHubRepos = () => {
   const [username, setUsername] = useState("");
-  const [profile, setProfile] = useState(null);
+  const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -11,14 +11,16 @@ export const GitHubProfile = () => {
     setError(null);
 
     try {
-      const response = await fetch(`https://api.github.com/users/${username}`);
+      const response = await fetch(
+        `https://api.github.com/users/${username}/repos`
+      );
 
       if (!response.ok) {
         throw new Error("User not found or network error");
       }
 
       const data = await response.json();
-      setProfile(data);
+      setRepos(data);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -39,7 +41,7 @@ export const GitHubProfile = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
       <div className="max-w-md w-full bg-white rounded-lg shadow-md p-6">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">
-          GitHub Profile Lookup
+          GitHub Repos Lookup
         </h2>
         <form onSubmit={handleSubmit} className="flex items-center mb-4">
           <input
@@ -60,40 +62,16 @@ export const GitHubProfile = () => {
         {loading && <p className="text-blue-500">Loading...</p>}
         {error && <p className="text-red-500">Error: {error}</p>}
 
-        {profile && !loading && !error && (
-          <div className="border border-gray-300 rounded-lg p-4 mt-4 bg-gray-50">
-            <img
-              src={profile.avatar_url}
-              alt={`${profile.login} avatar`}
-              className="w-24 h-24 rounded-full mx-auto mb-4"
-            />
-            <h3 className="text-xl font-bold text-center text-gray-800">
-              {profile.name || profile.login}
-            </h3>
-            <p className="text-center text-gray-600 mb-4">
-              {profile.bio || "No bio available"}
-            </p>
-            <div className="flex justify-between text-gray-700 mb-4">
-              <p>
-                <strong>Followers:</strong> {profile.followers}
-              </p>
-              <p>
-                <strong>Following:</strong> {profile.following}
-              </p>
-            </div>
-            <p className="text-center text-gray-700 mb-4">
-              <strong>Public Repos:</strong> {profile.public_repos}
-            </p>
-            <div className="text-center">
-              <a
-                href={profile.html_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 hover:underline"
-              >
-                View GitHub Profile
-              </a>
-            </div>
+        {repos && !loading && !error && (
+          <div className="border border-gray-300 rounded-lg p-4 mt-4 bg-gray-50 gap-4 flex flex-col">
+            {repos.map((repo) => {
+              return (
+                <div className="border  px-5  py-3 rounded shadow">
+                  {repo.name}
+                  {/* add your ui here */}
+                </div>
+              );
+            })}
           </div>
         )}
       </div>
