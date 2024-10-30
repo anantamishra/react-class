@@ -34,20 +34,20 @@ export function Quiz() {
     }
   }, [quizData, currentQuestionIndex]);
 
-  const shuffleAnswers = () => {
+  function shuffleAnswers() {
     const currentQuestion = quizData[currentQuestionIndex];
     const answers = [
       ...currentQuestion.incorrect_answers,
       currentQuestion.correct_answer,
     ].sort(() => Math.random() - 0.5);
     setShuffledAnswers(answers);
-  };
+  }
 
-  const handleAnswerSelection = (answer) => {
+  function handleAnswerSelection(answer) {
     setSelectedAnswer(answer);
-  };
+  }
 
-  const handleNextQuestion = () => {
+  function handleNextQuestion() {
     if (selectedAnswer === quizData[currentQuestionIndex].correct_answer) {
       setScore((prevScore) => prevScore + 1);
     }
@@ -58,7 +58,7 @@ export function Quiz() {
     } else {
       setIsQuizComplete(true);
     }
-  };
+  }
 
   if (error) {
     return <div className="text-red-500 text-center">Error: {error}</div>;

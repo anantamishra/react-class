@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Footer, Header } from './components';
-import { About, Blogs, Calculator, Contact, GithubPage, GitHubProfile, GitHubRepos, Home, NewsPortal, Operation, Quiz, SingleBlog, SingleNews, SumInputs } from './pages';
+import { About, Blogs, Calculator, Contact, GitHubProfile, GitHubRepos, Home, NewsPortal, Operation, Quiz, QuizGpt, SingleBlog, SingleNews, SumInputs } from './pages';
 
 
 function App() {
@@ -22,6 +22,7 @@ function App() {
         <Route path="/blogs/:slug" element={<SingleBlog />} />
         <Route path="/github-profile" element={<GitHubProfile />} />
         <Route path="/github-repos" element={<GitHubRepos />} />
+        <Route path="/quiz-gpt" element={<QuizGpt />} />
       </Routes>
       <Footer />
     </>
