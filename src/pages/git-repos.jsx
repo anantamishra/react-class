@@ -11,9 +11,7 @@ export const GitHubRepos = () => {
     setError(null);
 
     try {
-      const response = await fetch(
-        `https://api.github.com/users/${username}/repos`
-      );
+      const response = await fetch(`http://www.omdbapi.com/?apikey=c9c13817&`);
 
       if (!response.ok) {
         throw new Error("User not found or network error");

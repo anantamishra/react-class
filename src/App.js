@@ -2,9 +2,11 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Footer, Header } from './components';
 import { About, Blogs, Calculator, Contact, GitHubProfile, GitHubRepos, Home, NewsPortal, Operation, Quiz, QuizGpt, SingleBlog, SingleNews, SumInputs } from './pages';
+import { createContext, useState } from 'react';
 
 
-function App() {
+function App(user) {
+
   return (
     <>
       <Header />
@@ -25,8 +27,7 @@ function App() {
         <Route path="/quiz-gpt" element={<QuizGpt />} />
       </Routes>
       <Footer />
-    </>
-  );
+    </>);
 }
 
 export default App;
