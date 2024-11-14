@@ -1,11 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Footer, Header } from './components';
-import { About, Blogs, Calculator, Contact, GitHubProfile, GitHubRepos, Home, NewsPortal, Operation, Quiz, QuizGpt, SingleBlog, SingleNews, SumInputs } from './pages';
-import { createContext, useState } from 'react';
+import { About, Blogs, Calculator, Contact, Counter, GitHubProfile, GitHubRepos, Home, NewsPortal, Operation, Quiz, QuizGpt, Section, SingleBlog, SingleNews, SumInputs, Translate } from './pages';
 
 
-function App(user) {
+function App() {
 
   return (
     <>
@@ -25,6 +24,9 @@ function App(user) {
         <Route path="/github-profile" element={<GitHubProfile />} />
         <Route path="/github-repos" element={<GitHubRepos />} />
         <Route path="/quiz-gpt" element={<QuizGpt />} />
+        <Route path="/translate" element={<Translate />} />
+        <Route path="/section" element={<Section />} />
+        <Route path="/useref" element={<Counter />} />
       </Routes>
       <Footer />
     </>);
