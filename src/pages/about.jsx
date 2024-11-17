@@ -1,4 +1,7 @@
 import React, { createContext, useContext, useState } from "react";
+import { FiBluetooth } from "react-icons/fi";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ThemeContext = createContext();
 
@@ -10,6 +13,13 @@ export const About = () => {
   function toggleTheme() {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   }
+  const notify = () =>
+    toast.warn("Wow so easy!", {
+      position: "top-center",
+      autoClose: 5000,
+      theme: "dark",
+      // delay: 1000,
+    });
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
@@ -27,6 +37,9 @@ export const About = () => {
             Switch to {theme === "light" ? "Dark" : "Light"} Theme
           </button>
         </div>
+        <FiBluetooth value={{ style: { verticalAlign: "middle" } }} />
+        <button onClick={notify}>Notify!</button>
+        <ToastContainer limit={10} draggable="mouse" stacked />
       </div>
     </ThemeContext.Provider>
   );

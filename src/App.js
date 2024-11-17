@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Footer, Header } from './components';
-import { About, Blogs, Calculator, Contact, Counter, GitHubProfile, GitHubRepos, Home, NewsPortal, Operation, Quiz, QuizGpt, Section, SingleBlog, SingleNews, SumInputs, Translate } from './pages';
+import { About, Blogs, Calculator, Contact, Counter, GitHubProfile, GitHubRepos, Home, NewsPortal, Operation, Quiz, QuizGpt, Section, SingleBlog, SingleNews, SumInputs, Translate, VideoPlayer } from './pages';
 
 
 function App() {
@@ -27,6 +27,7 @@ function App() {
         <Route path="/translate" element={<Translate />} />
         <Route path="/section" element={<Section />} />
         <Route path="/useref" element={<Counter />} />
+        <Route path="/video-player" element={<VideoPlayer />} />
       </Routes>
       <Footer />
     </>);
